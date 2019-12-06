@@ -52,15 +52,15 @@ func main() {
 		fmt.Printf("Days at Work: %+v\n", input.DaysAtWork)
 		fmt.Printf("PTO: %+v\n", input.PtoGiven)
 
-		result := maxVacation(input.DaysAtWork, input.PtoGiven)
-		fmt.Printf("PTO Days Index: %+v\n", result.PtoIndexes)
-		fmt.Printf("Max Vacation: %v\n", result.MaxVacation)
+		res := maxVacation(input.DaysAtWork, input.PtoGiven)
+		fmt.Printf("PTO Days Index: %+v\n", res.PtoIndexes)
+		fmt.Printf("Max Vacation: %v\n", res.MaxVacation)
 		fmt.Println()
 	}
 }
 
 func maxVacation(daysAtWork []bool, totalPto int) VacationOutput {
-	var result VacationOutput
+	var res VacationOutput
 	vacation := 0
 
 	for i := 0; i < len(daysAtWork); i++ {
@@ -77,12 +77,12 @@ func maxVacation(daysAtWork []bool, totalPto int) VacationOutput {
 			}
 		}
 
-		if vacation > result.MaxVacation {
-			result.MaxVacation = vacation
-			result.PtoIndexes = ptoIndexes
+		if vacation > res.MaxVacation {
+			res.MaxVacation = vacation
+			res.PtoIndexes = ptoIndexes
 		}
 
 		vacation = 0
 	}
-	return result
+	return res
 }
